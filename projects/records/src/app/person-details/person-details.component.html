@@ -1,0 +1,45 @@
+<mat-card style="margin: 0; padding: 0;">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-image">
+                <img src="assets/img/default.png" class="rounded-circle circle-border" alt="profile">
+            </div>
+            <div class="profile-info">
+                <div>
+                    <h2 class="no-margins">
+                        {{ personName }}
+                    </h2>
+                    <h4>{{ age }} yrs</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <table class="table-borderless m-b-xs">
+                <tbody>
+                <tr>
+                    <td>
+                        <strong>Gender: Male</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Patient Status: {{ patientStatus }}</strong>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-3">
+            <table class="table-borderless m-b-xs">
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Marital Status: {{ maritalStatus }}</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</mat-card>

@@ -1,0 +1,165 @@
+<div class="tabs-container">
+    <ul class="nav nav-tabs">
+        <li><a class="nav-link active" data-toggle="tab" href="#tab-1"> Summary </a></li>
+        <li><a class="nav-link" data-toggle="tab" href="#tab-2"> List </a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ibox-content">
+                            <h2>Demographics</h2>
+                            <ul class="todo-list m-t">
+                                <li>
+                                    <span class="m-l-xs">Full Name: </span>
+                                    <span class="m-l-xs capitalize"><strong>{{ fullName }}</strong></span>
+                                </li>
+                                <li>
+                                    <span class="m-l-xs">Date Of Birth: </span>
+                                    <span class="m-l-xs"><strong>{{ dateOfBirth | date: 'dd-MMM-yyyy' }}</strong></span>
+                                </li>
+                                <li>
+                                    <span class="m-l-xs">Mobile: </span>
+                                    <span class="m-l-xs"><strong>{{ phone }}</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="ibox-content">
+                            <h2>Notes</h2>
+                            <small>This is example of task list</small>
+                            <ul class="todo-list m-t">
+                                <!--<li>
+                                    <input type="checkbox" value="" name="" class="i-checks"/>
+                                    <span class="m-l-xs">Buy a milk</span>
+                                    <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" checked/>
+                                    <span class="m-l-xs">Go to shop and find some products.</span>
+                                    <small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="m-l-xs">Send documents to Mike</span>
+                                    <small class="label label-warning"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks"/>
+                                    <span class="m-l-xs">Go to the doctor dr Smith</span>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> 42 mins</small>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ibox-content">
+                            <h2>Upcoming Appointments & Treatment plans</h2>
+                            <small>This is example of task list</small>
+                            <ul class="todo-list m-t">
+                                <!--<li>
+                                    <input type="checkbox" value="" name="" class="i-checks"/>
+                                    <span class="m-l-xs">Buy a milk</span>
+                                    <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" checked/>
+                                    <span class="m-l-xs">Go to shop and find some products.</span>
+                                    <small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="m-l-xs">Send documents to Mike</span>
+                                    <small class="label label-warning"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks"/>
+                                    <span class="m-l-xs">Go to the doctor dr Smith</span>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> 42 mins</small>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="ibox-content">
+                            <h2>Allergies</h2>
+                            <small>This is example of task list</small>
+                            <ul class="todo-list m-t">
+                                <!--<li>
+                                    <input type="checkbox" value="" name="" class="i-checks"/>
+                                    <span class="m-l-xs">Buy a milk</span>
+                                    <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" checked/>
+                                    <span class="m-l-xs">Go to shop and find some products.</span>
+                                    <small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="m-l-xs">Send documents to Mike</span>
+                                    <small class="label label-warning"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks"/>
+                                    <span class="m-l-xs">Go to the doctor dr Smith</span>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> 42 mins</small>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+
+                <!--<fieldset>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">ID:</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="543"></div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Model:</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="..."></div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Location:</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="location"></div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Tax Class:</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" >
+                                <option>option 1</option>
+                                <option>option 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Quantity:</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="Quantity"></div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Minimum quantity:</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="2"></div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Sort order:</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="0"></div>
+                    </div>
+                    <div class="form-group row"><label class="col-sm-2 col-form-label">Status:</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" >
+                                <option>option 1</option>
+                                <option>option 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>-->
+
+
+            </div>
+        </div>
+    </div>
+</div>

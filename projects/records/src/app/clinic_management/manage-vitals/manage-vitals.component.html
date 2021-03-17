@@ -1,0 +1,90 @@
+<app-person-details></app-person-details>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-2">
+                        <app-patient-navigation></app-patient-navigation>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        <h5>Manage Vitals</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-xs-12">
+                                                <button mat-raised-button class="mat-primary" (click)="addVitals()"><span
+                                                    class="fa fa-plus-circle"> Add Vitals</span></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            &nbsp;&nbsp;
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <table mat-table [dataSource]="dataSource">
+
+                                                    <ng-container matColumnDef="vitalDateTime">
+                                                        <th mat-header-cell *matHeaderCellDef> Visit Date </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.vitalDateTime | date: 'dd-MMM-yyyy' }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="temperature">
+                                                        <th mat-header-cell *matHeaderCellDef> <strong>Temperature (℃)</strong> </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.temperature }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="height">
+                                                        <th mat-header-cell *matHeaderCellDef> Height </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.height }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="weight">
+                                                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="bpSystolic">
+                                                        <th mat-header-cell *matHeaderCellDef> BP(Systolic) </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.bpSystolic }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="bpDiastolic">
+                                                        <th mat-header-cell *matHeaderCellDef> BP(Diastolic) </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.bpDiastolic }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="respiratoryRate">
+                                                        <th mat-header-cell *matHeaderCellDef> Respiratory Rate(bpm) </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.respiratoryRate }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="pulse">
+                                                        <th mat-header-cell *matHeaderCellDef> Pulse </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.pulse }} </td>
+                                                    </ng-container>
+
+                                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                                </table>
+
+                                                <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

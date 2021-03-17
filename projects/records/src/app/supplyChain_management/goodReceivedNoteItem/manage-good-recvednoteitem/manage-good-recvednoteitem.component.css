@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+}
+
+.selected {
+    background-color: gray!important;
+}
+.fa .fa-trash-o{
+color: red;
+}

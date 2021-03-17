@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        <h5>Manage Stock Voucher</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-xs-12">
+                                                <button mat-raised-button class="mat-primary" (click)="addStockVoucher()"><span
+                                                    class="fa fa-plus-circle"> Add StockVoucher</span></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            &nbsp;&nbsp;
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <table mat-table [dataSource]="dataSource">
+
+                                                    <ng-container matColumnDef="storeId">
+                                                        <th mat-header-cell *matHeaderCellDef> Store ID </th>
+                                                        <td mat-cell *matCellDef="let element"> {{ element.storeId }} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="voucherDateTime">
+                                                        <th mat-header-cell *matHeaderCellDef> Voucher DateTime </th>
+                                                        <td mat-cell *matCellDef="let element"> {{element.voucherDateTime | date}} </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="action">
+                                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                        <td mat-cell *matCellDef="let element">
+                                                            <a (click)="onEditStockVoucher(element)" data-toggle="tooltip" data-placement="top" title="Mark as read" [disabled]="!editmode ? 'disabled': null"><i class="fa fa-edit" style="color: #4b9bb3;;"></i></a> |
+                                                            <a (click)="onDeleteSelected(element)" [disabled]="!editmode ? 'disabled': null"><i class="fa fa-trash-o" style="color: red"></i> </a>  
+                                                        </td>
+                                                    </ng-container>
+
+                                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRow = selectedRow === row ? null : row" [ngClass]="{ 'selected': row == selectedRow }" (click)="highlight()"></tr>
+                                                </table>
+
+                                                <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
+    [pageIndex]="currentPage" (page)="handlePage($event)">
+</mat-paginator>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

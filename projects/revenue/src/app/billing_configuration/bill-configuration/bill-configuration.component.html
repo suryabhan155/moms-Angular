@@ -1,0 +1,118 @@
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        <h5>Manage Bill Configuration</h5>
+
+                                        <h4 style="color: green;">{{message}}</h4>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <form [formGroup]="configurationFormGroup">
+                                            
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Dispensing Unit</mat-label>
+                                                        <input id="dispensingUnit" type="text" matInput placeholder="DispensingUnit" formControlName="dispensingUnit">
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Quantity PerDispenseUnit</mat-label>
+                                                        <input id="quantityPerDispenseUnit" type="text" matInput placeholder="Quantity PerDispenseUnit" formControlName="quantityPerDispenseUnit">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-select placeholder="Item Subtype" [(value)]="selectemasterId" formControlName="itemMasterId">
+                                                            <mat-option *ngFor="let item of MasterType" [value]="item.id">{{item.name}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                         <mat-select id="status" formControlName="type" placeholder="Status" [(value)]="selected">
+                                                            <mat-option [value]="true">Active</mat-option>
+                                                            <mat-option [value]="false">InActive</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Maximum Stock</mat-label>
+                                                        <input id="maxStock" type="number" matInput placeholder="Maximum Stock" formControlName="maxStock" required>
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Minimum Stock</mat-label>
+                                                        <input id="minStock" type="number" matInput placeholder="Minimum Stock" formControlName="minStock" required>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Purchase UnitPrice</mat-label>
+                                                        <input id="purchaseUnitPrice" type="number" matInput placeholder="Purchase UnitPrice" formControlName="purchaseUnitPrice">
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Quantity PerPurchase Unit</mat-label>
+                                                        <input id="quantityPerPurchaseUnit" type="number" matInput placeholder="Quantity PerPurchaseUnit" formControlName="quantityPerPurchaseUnit">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Purchase Unit</mat-label>
+                                                        <input id="purchaseUnit" type="text" matInput placeholder="PurchaseUnit" formControlName="purchaseUnit">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12" style="padding-left: 30px;">
+                                                    <button *ngIf="edit" class="col-md-6" mat-raised-button color="primary" (click)="onEditConfiguration()">
+                                                        <mat-icon aria-hidden="false">save</mat-icon>&nbsp;Update
+                                                    </button>
+                                                  
+                                                    <button *ngIf="save" class="col-md-6" mat-raised-button color="primary" (click)="onSaveConfiguration()">
+                                                        <mat-icon aria-hidden="false">save</mat-icon>&nbsp;Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

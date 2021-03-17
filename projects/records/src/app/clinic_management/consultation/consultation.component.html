@@ -1,0 +1,106 @@
+<app-person-details></app-person-details>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-2">
+                        <app-patient-navigation></app-patient-navigation>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        <h5>Consultation</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <form [formGroup]="vitalsFormGroup">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12">
+                                                    <mat-form-field appearance="outline" class="col-md-12">
+                                                        <mat-label>Visit Date</mat-label>
+                                                        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="visitDate" (click)="picker.open()" required>
+                                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field class="col-md-12" appearance="outline">
+                                                        <mat-chip-list #chipList aria-label="Complaints">
+                                                            <mat-chip *ngFor="let complaint of complaints" [selectable]="selectable" [removable]="removable" (removed)="removeComplaint(complaint)">
+                                                                {{ complaint.name }}
+                                                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                            </mat-chip>
+                                                            <input placeholder="New Complaint"
+                                                                   [matChipInputFor]="chipList"
+                                                                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                                   [matChipInputAddOnBlur]="addOnBlur"
+                                                                   (matChipInputTokenEnd)="add($event)"
+                                                            />
+                                                        </mat-chip-list>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field class="col-md-12" appearance="outline">
+                                                        <mat-label>Finding</mat-label>
+                                                        <mat-chip-list #findingChipList aria-label="Findings">
+                                                            <mat-chip *ngFor="let finding of findings" [selectable]="selectable" [removable]="removable" (removed)="removeFinding(finding)">
+                                                                {{ finding.name }}
+                                                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                            </mat-chip>
+                                                            <input placeholder="New Finding"
+                                                                   [matChipInputFor]="findingChipList"
+                                                                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                                   [matChipInputAddOnBlur]="addOnBlur"
+                                                                   (matChipInputTokenEnd)="addFinding($event)"
+                                                            />
+                                                        </mat-chip-list>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field class="col-md-12" appearance="outline">
+                                                        <mat-label>Diagnosis</mat-label>
+                                                        <textarea matInput formControlName="diagnosis" placeholder="Diagnosis"></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field class="col-md-12" appearance="outline">
+                                                        <mat-label>Treatment</mat-label>
+                                                        <textarea matInput formControlName="treatment" placeholder="Treatment"></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12" style="padding-left: 30px;">
+                                                    <button class="col-md-6" mat-raised-button color="primary">
+                                                        <mat-icon aria-hidden="false">save</mat-icon>&nbsp;Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

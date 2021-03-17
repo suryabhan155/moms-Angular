@@ -1,0 +1,372 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>New Patient</h5>
+            </div>
+            <div class="ibox-content">
+                <mat-vertical-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="firstFormGroup" label="Step 1">
+                        <form [formGroup]="firstFormGroup" autocomplete="off">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                    <ng-template matStepLabel>Client Information</ng-template>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Registration Date</mat-label>
+                                        <input matInput [matDatepicker]="registrationPicker" [max]="maxDate" formControlName="registrationDate" (click)="registrationPicker.open()" required>
+                                        <mat-datepicker-toggle matSuffix [for]="registrationPicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #registrationPicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>First Name</mat-label>
+                                        <input id="firstName" type="text" name="firstName" autocomplete="new-password" matInput placeholder="First name" formControlName="firstName" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Middle Name</mat-label>
+                                        <input id="middleName" type="text" name="middleName" autocomplete="new-password" matInput placeholder="Middle name" formControlName="middleName">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Last Name</mat-label>
+                                        <input id="lastName" type="text" name="lastName" autocomplete="new-password" matInput placeholder="Last name" formControlName="lastName" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Sex</mat-label>
+                                        <mat-select placeholder="Sex" id="sex" formControlName="sex" required>
+                                            <mat-option></mat-option>
+                                            <mat-option *ngFor="let gender of GenderOptions" [value]="gender.lookupItemId">
+                                                {{gender.lookupItemName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Marital Status</mat-label>
+                                        <mat-select placeholder="Marital Status" id="maritalStatus" formControlName="maritalStatus" required>
+                                            <mat-option></mat-option>
+                                            <mat-option *ngFor="let maritalStatus of MaritalStatusOptions" [value]="maritalStatus.lookupItemId">
+                                                {{maritalStatus.lookupItemName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Date Of Birth</mat-label>
+                                        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="doB" (click)="picker.open()" required>
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12 pull-left">
+                                    <div class="col-md-12 dob_calculator">
+                                        <mat-icon aria-hidden="false" aria-label="calculate icon" (click)="openDialog()">calculate</mat-icon>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>ID No/Passport No</mat-label>
+                                        <input id="identificationNumber" type="text" name="identificationNumber" autocomplete="new-password" matInput placeholder="ID No/Passport No" formControlName="identificationNumber">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                &nbsp;&nbsp;
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6 col-xs-12">
+                                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step [stepControl]="secondFormGroup" label="Step 2">
+                        <form [formGroup]="secondFormGroup">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                    <ng-template matStepLabel>Location & Contacts</ng-template>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>County</mat-label>
+                                        <mat-select placeholder="County" id="county" formControlName="county" (selectionChange)="onCountySelect($event)" required>
+                                            <mat-option></mat-option>
+                                            <mat-option *ngFor="let county of CountyOptions" [value]="county.id">
+                                                {{county.countyName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Sub-County</mat-label>
+                                        <mat-select placeholder="Sub-County" id="subCounty" formControlName="subCounty" (selectionChange)="onSubCountySelect($event)" required>
+                                            <mat-option></mat-option>
+                                            <mat-option *ngFor="let subCounty of SubCountyOptions" [value]="subCounty.id">
+                                                {{subCounty.subCountyName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Ward</mat-label>
+                                        <mat-select placeholder="Ward" id="ward" formControlName="ward" required>
+                                            <mat-option></mat-option>
+                                            <mat-option *ngFor="let ward of WardOptions" [value]="ward.id">
+                                                {{ward.wardName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>City</mat-label>
+                                        <input id="city" name="city" type="text" autocomplete="new-password" matInput placeholder="City" formControlName="city">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Mobile Phone</mat-label>
+                                        <input id="mobilePhone" name="mobilePhone" type="text" autocomplete="new-password" matInput placeholder="Mobile Phone" formControlName="mobilePhone">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Email</mat-label>
+                                        <input id="email" type="email" name="email" autocomplete="new-password" matInput placeholder="Email" formControlName="email">
+                                        <mat-error *ngIf="secondFormGroup.controls.email.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Address</mat-label>
+                                        <input id="address" type="text" name="address" autocomplete="new-password" matInput placeholder="address" formControlName="address">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>PostalCode</mat-label>
+                                        <input id="postalCode" type="text" name="postalCode" autocomplete="new-password" matInput placeholder="postalCode" formControlName="postalCode">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Home Phone</mat-label>
+                                        <input id="homePhone" name="homePhone" type="text" autocomplete="new-password" matInput placeholder="Home Phone" formControlName="homePhone">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                &nbsp;&nbsp;
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3 col-xs-12">
+                                            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3 col-xs-12">
+                                            <button mat-raised-button color="primary" matStepperNext>Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step [stepControl]="fourthFormGroup" label="Step 3">
+                        <form [formGroup]="fourthFormGroup">
+                            <ng-template matStepLabel>Employers</ng-template>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Occupation</mat-label>
+                                        <input id="occupation" type="text" name="occupation" autocomplete="new-password" matInput placeholder="Occupation" formControlName="occupation" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Employer</mat-label>
+                                        <input id="employer" name="employer" type="text" autocomplete="new-password" matInput placeholder="employer" formControlName="employers" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Employer Address</mat-label>
+                                        <input id="employerAddress" name="employerAddress" type="text" autocomplete="new-password" matInput placeholder="Employer Address" formControlName="employerAddress" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Industry</mat-label>
+                                        <input id="industry" name="industry" type="text" autocomplete="new-password" matInput placeholder="Industry" formControlName="industry" />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Country</mat-label>
+                                        <input id="country" name="country" type="text" autocomplete="new-password" matInput placeholder="Country" formControlName="country" />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>City</mat-label>
+                                        <input id="e_city" name="e_city" type="text" autocomplete="new-password" matInput placeholder="City" formControlName="city" />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                &nbsp;
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3 col-xs-12">
+                                            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3 col-xs-12">
+                                            <button mat-raised-button color="primary" matStepperNext>Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step [stepControl]="fifthFormGroup" label="Step 4">
+                        <form [formGroup]="fifthFormGroup">
+                            <ng-template matStepLabel>Patient Status</ng-template>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Patient Status</mat-label>
+                                        <mat-select placeholder="Patient Status" id="patientStatus" formControlName="patientStatus" (selectionChange)="onPatientStatusChange()" required>
+                                            <mat-option></mat-option>
+                                            <mat-option value="Alive">Alive</mat-option>
+                                            <mat-option value="Dead">Dead</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Date Deceased</mat-label>
+                                        <input matInput [matDatepicker]="picker_deceased" formControlName="dateDeceased" >
+                                        <mat-datepicker-toggle matSuffix [for]="picker_deceased"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker_deceased></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Reason Deceased</mat-label>
+                                        <mat-select placeholder="Reason Deceased" id="reasonDeceased" formControlName="reasonDeceased">
+                                            <mat-option value="option">Option</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Diagnosis</mat-label>
+                                        <mat-select placeholder="Diagnosis" id="icD10" formControlName="icD10">
+                                            <mat-option value="option">Option</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3 col-xs-12">
+                                            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3 col-xs-12">
+                                            <button mat-raised-button color="primary" matStepperNext>Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step label="Step 5">
+                        <ng-template matStepLabel>Save</ng-template>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                                        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                                        <button mat-raised-button color="primary" (click)="SaveRegistration()">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-step>
+
+                </mat-vertical-stepper>
+            </div>
+        </div>
+    </div>
+</div>

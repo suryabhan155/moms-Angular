@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+.selected {
+    background-color: gray!important;
+}
+
+/*.mat-row:nth-child(even){
+    background-color: #e4f0ec;
+}
+
+.mat-row:nth-child(odd){
+    background-color:#ffffff;
+}*/
+
+.mail-search-custom {
+    width: 450px;
+}
